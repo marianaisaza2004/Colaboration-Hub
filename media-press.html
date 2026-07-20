@@ -26,6 +26,9 @@
   <p class="page-subtitle">Press release and article about the Clarksville-Fort Campbell delegation at the PDI Leaders Academy.</p>
 
   <div class="card-grid" id="docs"></div>
+
+  <h2 class="page-title" style="margin-top:2.5rem;font-size:1.4rem;">Links</h2>
+  <div class="card-grid" id="links"></div>
 </main>
 
 <script>
@@ -51,6 +54,26 @@
       </span>
     `;
     container.appendChild(card);
+  });
+
+  const links = [
+    { name: "Mayor Tim Kelly", url: "https://lnkd.in/eyi3vDmf", desc: "LinkedIn post." },
+    { name: "Academy video", url: "https://www.linkedin.com/feed/?highlightedUpdateUrn=urn%3Ali%3Aactivity%3A7479287602706292737&highlightedUpdateType=REACTED_TO_UPDATE_MENTIONING_YOU&origin=INAPP&showCommentBox=true", desc: "LinkedIn video." },
+  ];
+
+  const linksContainer = document.getElementById("links");
+
+  links.forEach(l => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3><span class="badge link">LINK</span> ${l.name}</h3>
+      <p>${l.desc}</p>
+      <span class="actions">
+        <a href="${l.url}" target="_blank" rel="noopener">Open</a>
+      </span>
+    `;
+    linksContainer.appendChild(card);
   });
 </script>
 

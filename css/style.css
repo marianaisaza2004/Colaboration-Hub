@@ -134,6 +134,7 @@ main {
 .badge.pdf { background: #c0392b; }
 .badge.ppt { background: #d35400; }
 .badge.doc { background: #2a5db0; }
+.badge.link { background: #0a7c66; }
 
 .actions a {
   font-size: 0.85rem;
