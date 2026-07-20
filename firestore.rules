@@ -2,23 +2,23 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Perfiles: cualquier usuario autenticado puede leer (para listar el
-    // directorio de chat privado); cada quien solo puede escribir su propio doc.
+    // Profiles: any authenticated user can read (needed to list the private
+    // chat directory); each user can only write their own doc.
     match /users/{userId} {
       allow read: if request.auth != null;
       allow create, update: if request.auth != null && request.auth.uid == userId;
       allow delete: if false;
     }
 
-    // Chat grupal: cualquier usuario autenticado puede leer y escribir mensajes,
-    // pero solo con su propio uid como remitente.
+    // Group chat: any authenticated user can read and write messages,
+    // but only with their own uid as the sender.
     match /groupMessages/{messageId} {
       allow read: if request.auth != null;
       allow create: if request.auth != null && request.resource.data.senderUid == request.auth.uid;
       allow update, delete: if false;
     }
 
-    // Chats privados: solo los dos participantes pueden leer/escribir.
+    // Private chats: only the two participants can read/write.
     match /privateChats/{chatId} {
       allow read, write: if request.auth != null && request.auth.uid in chatId.split('_');
 

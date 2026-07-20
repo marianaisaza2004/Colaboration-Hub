@@ -32,7 +32,7 @@ function renderMessages(docs) {
     const div = document.createElement("div");
     div.className = "msg" + (mine ? " mine" : "");
     const time = m.createdAt && m.createdAt.toDate ? m.createdAt.toDate().toLocaleString() : "";
-    div.innerHTML = `<div class="meta">${escapeHtml(m.senderName || "Usuario")} · ${time}</div>${escapeHtml(m.text || "")}`;
+    div.innerHTML = `<div class="meta">${escapeHtml(m.senderName || "User")} · ${time}</div>${escapeHtml(m.text || "")}`;
     messagesEl.appendChild(div);
   });
   messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -50,14 +50,14 @@ function privateChatId(uidA, uidB) {
 
 function subscribeToGroup() {
   if (unsubscribeMessages) unsubscribeMessages();
-  chatTitleEl.textContent = "Chat grupal";
+  chatTitleEl.textContent = "Group chat";
   const q = query(collection(db, "groupMessages"), orderBy("createdAt", "asc"));
   unsubscribeMessages = onSnapshot(q, (snap) => renderMessages(snap.docs));
 }
 
 function subscribeToPrivate(otherUid, otherName) {
   if (unsubscribeMessages) unsubscribeMessages();
-  chatTitleEl.textContent = "Privado: " + otherName;
+  chatTitleEl.textContent = "Private: " + otherName;
   const chatId = privateChatId(currentUser.uid, otherUid);
   const q = query(collection(db, "privateChats", chatId, "messages"), orderBy("createdAt", "asc"));
   unsubscribeMessages = onSnapshot(q, (snap) => renderMessages(snap.docs));

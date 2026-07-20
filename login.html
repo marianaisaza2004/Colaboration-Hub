@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iniciar sesión - TLAP</title>
+<title>Log in - TLAP</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,41 +12,41 @@
 </header>
 
 <main>
-  <h1 class="page-title">Bienvenido</h1>
-  <p class="page-subtitle">Crea una cuenta o inicia sesión para entrar al sitio.</p>
+  <h1 class="page-title">Welcome</h1>
+  <p class="page-subtitle">Create an account or log in to enter the site.</p>
 
   <div class="auth-wrap">
     <div class="auth-tabs">
-      <button type="button" id="tabLogin">Iniciar sesión</button>
-      <button type="button" id="tabSignup">Crear cuenta</button>
+      <button type="button" id="tabLogin">Log in</button>
+      <button type="button" id="tabSignup">Create account</button>
     </div>
 
     <form id="loginForm">
       <div class="field">
-        <label for="loginEmail">Correo</label>
+        <label for="loginEmail">Email</label>
         <input type="email" id="loginEmail" required>
       </div>
       <div class="field">
-        <label for="loginPassword">Clave</label>
+        <label for="loginPassword">Password</label>
         <input type="password" id="loginPassword" required>
       </div>
-      <button class="btn" type="submit" style="width:100%;">Entrar</button>
+      <button class="btn" type="submit" style="width:100%;">Log in</button>
     </form>
 
     <form id="signupForm" style="display:none;">
       <div class="field">
-        <label for="signupName">Nombre</label>
+        <label for="signupName">Name</label>
         <input type="text" id="signupName" required>
       </div>
       <div class="field">
-        <label for="signupEmail">Correo</label>
+        <label for="signupEmail">Email</label>
         <input type="email" id="signupEmail" required>
       </div>
       <div class="field">
-        <label for="signupPassword">Clave</label>
+        <label for="signupPassword">Password</label>
         <input type="password" id="signupPassword" minlength="6" required>
       </div>
-      <button class="btn" type="submit" style="width:100%;">Crear cuenta</button>
+      <button class="btn" type="submit" style="width:100%;">Create account</button>
     </form>
 
     <div class="error-msg" id="authError"></div>

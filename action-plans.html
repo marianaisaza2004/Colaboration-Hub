@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="gate-pending">
+<html lang="en" class="gate-pending">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +10,24 @@
 <header class="site-header">
   <a class="brand" href="index.html">Tennessee Leaders Action Platform</a>
   <nav class="site-nav">
-    <a href="index.html">Inicio</a>
+    <a href="index.html">Home</a>
     <a href="action-plans.html" class="active">Action Plans</a>
     <a href="media-press.html">Media &amp; Press Release</a>
     <a href="chat.html">Chat</a>
   </nav>
   <div class="topbar-user" id="topbarUser" style="display:none;">
     <span id="currentUserLabel"></span>
-    <button id="logoutBtn">Salir</button>
+    <button id="logoutBtn">Log out</button>
   </div>
 </header>
 
 <main>
   <h1 class="page-title">Action Plans</h1>
-  <p class="page-subtitle">Presentaciones de las iniciativas de acción por zona regional. Cada zona incluye su versión en PDF (vista rápida) y PowerPoint (descarga).</p>
+  <p class="page-subtitle">Presentations of the action initiatives by regional zone. Each zone includes a PDF version (quick view) and a PowerPoint version (download).</p>
 
   <div class="card-grid" id="zones"></div>
 
-  <p class="note">La presentación de PowerPoint de la Zona 6 supera el límite de 100&nbsp;MB de GitHub y por eso se enlaza directamente a Google Drive en lugar de alojarse en este sitio.</p>
+  <p class="note">The Zone 6 PowerPoint presentation exceeds GitHub's 100&nbsp;MB limit, so it links directly to Google Drive instead of being hosted on this site.</p>
 </main>
 
 <script>
@@ -52,17 +52,17 @@
     card.innerHTML = `
       <h3>${z.name}</h3>
       <div class="file-row">
-        <span class="label"><span class="badge pdf">PDF</span> Presentación</span>
+        <span class="label"><span class="badge pdf">PDF</span> Presentation</span>
         <span class="actions">
-          <a href="${z.pdf}" target="_blank" rel="noopener">Ver</a>
-          <a href="${z.pdf}" download>Descargar</a>
+          <a href="${z.pdf}" target="_blank" rel="noopener">View</a>
+          <a href="${z.pdf}" download>Download</a>
         </span>
       </div>
       <div class="file-row">
-        <span class="label"><span class="badge ppt">PPT</span> Presentación</span>
+        <span class="label"><span class="badge ppt">PPT</span> Presentation</span>
         <span class="actions">
-          <a href="${z.ppt}" target="_blank" rel="noopener">${z.pptExternal ? "Abrir en Drive" : "Ver"}</a>
-          ${z.pptExternal ? "" : `<a href="${z.ppt}" download>Descargar</a>`}
+          <a href="${z.ppt}" target="_blank" rel="noopener">${z.pptExternal ? "Open in Drive" : "View"}</a>
+          ${z.pptExternal ? "" : `<a href="${z.ppt}" download>Download</a>`}
         </span>
       </div>
     `;

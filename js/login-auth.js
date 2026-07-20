@@ -44,11 +44,11 @@ signupForm.addEventListener("submit", async (e) => {
   const password = document.getElementById("signupPassword").value;
 
   if (!name || !email || !password) {
-    errorMsg.textContent = "Completa nombre, correo y clave.";
+    errorMsg.textContent = "Please fill in name, email, and password.";
     return;
   }
   if (password.length < 6) {
-    errorMsg.textContent = "La clave debe tener al menos 6 caracteres.";
+    errorMsg.textContent = "Password must be at least 6 characters.";
     return;
   }
 
@@ -85,20 +85,20 @@ function goHome() {
   window.location.href = params.get("next") || "index.html";
 }
 
-// Si ya hay una sesión activa (ej. abriste login.html directamente estando
-// logueado), no te deja ver el formulario, te manda al sitio.
+// If a session is already active (e.g. login.html was opened directly while
+// logged in), skip the form and go straight into the site.
 onAuthStateChanged(auth, (user) => {
   if (user) goHome();
 });
 
 function translateError(code) {
   const map = {
-    "auth/email-already-in-use": "Ese correo ya tiene una cuenta.",
-    "auth/invalid-email": "Correo inválido.",
-    "auth/weak-password": "La clave es muy débil (mínimo 6 caracteres).",
-    "auth/user-not-found": "No existe una cuenta con ese correo.",
-    "auth/wrong-password": "Clave incorrecta.",
-    "auth/invalid-credential": "Correo o clave incorrectos.",
+    "auth/email-already-in-use": "That email already has an account.",
+    "auth/invalid-email": "Invalid email.",
+    "auth/weak-password": "Password is too weak (minimum 6 characters).",
+    "auth/user-not-found": "No account exists with that email.",
+    "auth/wrong-password": "Incorrect password.",
+    "auth/invalid-credential": "Incorrect email or password.",
   };
-  return map[code] || "Ocurrió un error. Intenta de nuevo.";
+  return map[code] || "Something went wrong. Please try again.";
 }

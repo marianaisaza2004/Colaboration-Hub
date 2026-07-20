@@ -1,12 +1,12 @@
-// Reemplaza estos valores con los de tu propio proyecto Firebase:
-// Firebase Console -> Configuración del proyecto -> "Tus apps" -> Config del SDK.
-// Estas claves NO son secretas, son públicas por diseño (se protegen con las
-// reglas de seguridad de Firestore/Auth, no ocultándolas).
+// Replace these values with your own Firebase project's:
+// Firebase Console -> Project settings -> "Your apps" -> SDK config.
+// These keys are NOT secret, they are meant to be public (security comes
+// from Firestore/Auth security rules, not from hiding them).
 export const firebaseConfig = {
-  apiKey: "REEMPLAZA_apiKey",
-  authDomain: "REEMPLAZA.firebaseapp.com",
-  projectId: "REEMPLAZA_projectId",
-  storageBucket: "REEMPLAZA.appspot.com",
-  messagingSenderId: "REEMPLAZA_senderId",
-  appId: "REEMPLAZA_appId",
+  apiKey: "REPLACE_apiKey",
+  authDomain: "REPLACE.firebaseapp.com",
+  projectId: "REPLACE_projectId",
+  storageBucket: "REPLACE.appspot.com",
+  messagingSenderId: "REPLACE_senderId",
+  appId: "REPLACE_appId",
 };

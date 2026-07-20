@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="gate-pending">
+<html lang="en" class="gate-pending">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,36 +10,36 @@
 <header class="site-header">
   <a class="brand" href="index.html">Tennessee Leaders Action Platform</a>
   <nav class="site-nav">
-    <a href="index.html">Inicio</a>
+    <a href="index.html">Home</a>
     <a href="action-plans.html">Action Plans</a>
     <a href="media-press.html">Media &amp; Press Release</a>
     <a href="chat.html" class="active">Chat</a>
   </nav>
   <div class="topbar-user" id="topbarUser" style="display:none;">
     <span id="currentUserLabel"></span>
-    <button id="logoutBtn">Salir</button>
+    <button id="logoutBtn">Log out</button>
   </div>
 </header>
 
 <main>
   <h1 class="page-title">Chat</h1>
-  <p class="page-subtitle">Chat grupal y mensajes privados entre miembros.</p>
+  <p class="page-subtitle">Group chat and private messages between members.</p>
 
   <div class="chat-layout">
     <aside class="chat-sidebar">
-      <h4>Canales</h4>
-      <div class="chat-channel-item active" id="groupChannelBtn">Chat grupal</div>
+      <h4>Channels</h4>
+      <div class="chat-channel-item active" id="groupChannelBtn">Group chat</div>
 
-      <h4 style="margin-top:1.25rem;">Mensajes privados</h4>
+      <h4 style="margin-top:1.25rem;">Private messages</h4>
       <div id="usersList"></div>
     </aside>
 
     <div class="chat-main">
-      <div class="chat-header" id="chatTitle">Chat grupal</div>
+      <div class="chat-header" id="chatTitle">Group chat</div>
       <div class="chat-messages" id="messages"></div>
       <form class="chat-input" id="messageForm">
-        <input type="text" id="messageInput" placeholder="Escribe un mensaje..." autocomplete="off">
-        <button class="btn" type="submit">Enviar</button>
+        <input type="text" id="messageInput" placeholder="Type a message..." autocomplete="off">
+        <button class="btn" type="submit">Send</button>
       </form>
     </div>
   </div>
