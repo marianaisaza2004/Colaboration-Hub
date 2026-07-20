@@ -3,7 +3,6 @@ import {
   db,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
   onAuthStateChanged,
   updateProfile,
   doc,
@@ -11,11 +10,7 @@ import {
   serverTimestamp,
 } from "./firebase-init.js";
 
-const authSection = document.getElementById("authSection");
-const chatSection = document.getElementById("chatSection");
 const errorMsg = document.getElementById("authError");
-const currentUserLabel = document.getElementById("currentUserLabel");
-
 const tabLogin = document.getElementById("tabLogin");
 const tabSignup = document.getElementById("tabSignup");
 const loginForm = document.getElementById("loginForm");
@@ -65,6 +60,7 @@ signupForm.addEventListener("submit", async (e) => {
       email,
       createdAt: serverTimestamp(),
     });
+    goHome();
   } catch (err) {
     errorMsg.textContent = translateError(err.code);
   }
@@ -78,22 +74,21 @@ loginForm.addEventListener("submit", async (e) => {
 
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    goHome();
   } catch (err) {
     errorMsg.textContent = translateError(err.code);
   }
 });
 
-document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
+function goHome() {
+  const params = new URLSearchParams(window.location.search);
+  window.location.href = params.get("next") || "index.html";
+}
 
+// Si ya hay una sesión activa (ej. abriste login.html directamente estando
+// logueado), no te deja ver el formulario, te manda al sitio.
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    authSection.style.display = "none";
-    chatSection.style.display = "block";
-    currentUserLabel.textContent = user.displayName || user.email;
-  } else {
-    authSection.style.display = "block";
-    chatSection.style.display = "none";
-  }
+  if (user) goHome();
 });
 
 function translateError(code) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="gate-pending">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,10 @@
     <a href="media-press.html">Media &amp; Press Release</a>
     <a href="chat.html">Chat</a>
   </nav>
+  <div class="topbar-user" id="topbarUser" style="display:none;">
+    <span id="currentUserLabel"></span>
+    <button id="logoutBtn">Salir</button>
+  </div>
 </header>
 
 <main>
@@ -65,5 +69,7 @@
     container.appendChild(card);
   });
 </script>
+
+<script type="module" src="js/guard.js"></script>
 </body>
 </html>

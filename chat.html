@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="gate-pending">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,80 +22,30 @@
 </header>
 
 <main>
-  <section id="authSection">
-    <h1 class="page-title">Chat</h1>
-    <p class="page-subtitle">Crea una cuenta o inicia sesión para chatear con el grupo o enviar mensajes privados.</p>
+  <h1 class="page-title">Chat</h1>
+  <p class="page-subtitle">Chat grupal y mensajes privados entre miembros.</p>
 
-    <div class="auth-wrap">
-      <div class="auth-tabs">
-        <button type="button" id="tabLogin">Iniciar sesión</button>
-        <button type="button" id="tabSignup">Crear cuenta</button>
-      </div>
+  <div class="chat-layout">
+    <aside class="chat-sidebar">
+      <h4>Canales</h4>
+      <div class="chat-channel-item active" id="groupChannelBtn">Chat grupal</div>
 
-      <form id="loginForm">
-        <div class="field">
-          <label for="loginEmail">Correo</label>
-          <input type="email" id="loginEmail" required>
-        </div>
-        <div class="field">
-          <label for="loginPassword">Clave</label>
-          <input type="password" id="loginPassword" required>
-        </div>
-        <button class="btn" type="submit" style="width:100%;">Entrar</button>
+      <h4 style="margin-top:1.25rem;">Mensajes privados</h4>
+      <div id="usersList"></div>
+    </aside>
+
+    <div class="chat-main">
+      <div class="chat-header" id="chatTitle">Chat grupal</div>
+      <div class="chat-messages" id="messages"></div>
+      <form class="chat-input" id="messageForm">
+        <input type="text" id="messageInput" placeholder="Escribe un mensaje..." autocomplete="off">
+        <button class="btn" type="submit">Enviar</button>
       </form>
-
-      <form id="signupForm" style="display:none;">
-        <div class="field">
-          <label for="signupName">Nombre</label>
-          <input type="text" id="signupName" required>
-        </div>
-        <div class="field">
-          <label for="signupEmail">Correo</label>
-          <input type="email" id="signupEmail" required>
-        </div>
-        <div class="field">
-          <label for="signupPassword">Clave</label>
-          <input type="password" id="signupPassword" minlength="6" required>
-        </div>
-        <button class="btn" type="submit" style="width:100%;">Crear cuenta</button>
-      </form>
-
-      <div class="error-msg" id="authError"></div>
     </div>
-  </section>
-
-  <section id="chatSection" style="display:none;">
-    <div class="chat-layout">
-      <aside class="chat-sidebar">
-        <h4>Canales</h4>
-        <div class="chat-channel-item active" id="groupChannelBtn">Chat grupal</div>
-
-        <h4 style="margin-top:1.25rem;">Mensajes privados</h4>
-        <div id="usersList"></div>
-      </aside>
-
-      <div class="chat-main">
-        <div class="chat-header" id="chatTitle">Chat grupal</div>
-        <div class="chat-messages" id="messages"></div>
-        <form class="chat-input" id="messageForm">
-          <input type="text" id="messageInput" placeholder="Escribe un mensaje..." autocomplete="off">
-          <button class="btn" type="submit">Enviar</button>
-        </form>
-      </div>
-    </div>
-  </section>
+  </div>
 </main>
 
-<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/guard.js"></script>
 <script type="module" src="js/chat.js"></script>
-<script>
-  // Muestra/oculta el bloque de usuario en la barra superior según el estado de auth.
-  import("./js/firebase-init.js").then(({ auth, onAuthStateChanged }) => {
-    const topbarUser = document.getElementById("topbarUser");
-    onAuthStateChanged(auth, (user) => {
-      topbarUser.style.display = user ? "flex" : "none";
-    });
-  });
-</script>
 </body>
 </html>

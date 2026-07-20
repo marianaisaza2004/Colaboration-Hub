@@ -12,6 +12,11 @@
 
 * { box-sizing: border-box; }
 
+html.gate-pending main,
+html.gate-pending .topbar-user {
+  visibility: hidden;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
