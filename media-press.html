@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media & Press Release - TLAP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">Tennessee Leaders Action Platform</a>
+  <nav class="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="action-plans.html">Action Plans</a>
+    <a href="media-press.html" class="active">Media &amp; Press Release</a>
+    <a href="chat.html">Chat</a>
+  </nav>
+</header>
+
+<main>
+  <h1 class="page-title">Media &amp; Press Release</h1>
+  <p class="page-subtitle">Comunicado de prensa y artículo sobre la delegación Clarksville-Fort Campbell en la PDI Leaders Academy.</p>
+
+  <div class="card-grid" id="docs"></div>
+</main>
+
+<script>
+  const docs = [
+    { name: "Press Release", file: "assets/media-press/TLAPPressRelease052126.docx", desc: "Comunicado oficial: 13 líderes de Clarksville-Fort Campbell inducidos en la PDI Leaders Academy." },
+    { name: "Artículo", file: "assets/media-press/TLAPArticle(002).docx", desc: "Artículo editorial sobre el programa y su impacto regional." },
+  ];
+
+  const container = document.getElementById("docs");
+
+  docs.forEach(d => {
+    const absoluteUrl = new URL(d.file, window.location.href).href;
+    const viewerUrl = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(absoluteUrl);
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3><span class="badge doc">DOC</span> ${d.name}</h3>
+      <p>${d.desc}</p>
+      <span class="actions">
+        <a href="${viewerUrl}" target="_blank" rel="noopener">Ver</a>
+        <a href="${d.file}" download>Descargar</a>
+      </span>
+    `;
+    container.appendChild(card);
+  });
+</script>
+
+<p class="note" style="max-width:1080px;margin:0 auto;padding:0 1.5rem 3rem;">
+  "Ver" abre el documento con el visor de Office Online (requiere que el sitio esté publicado públicamente, no funciona en local).
+</p>
+</body>
+</html>

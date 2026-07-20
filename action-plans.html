@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Action Plans - TLAP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">Tennessee Leaders Action Platform</a>
+  <nav class="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="action-plans.html" class="active">Action Plans</a>
+    <a href="media-press.html">Media &amp; Press Release</a>
+    <a href="chat.html">Chat</a>
+  </nav>
+</header>
+
+<main>
+  <h1 class="page-title">Action Plans</h1>
+  <p class="page-subtitle">Presentaciones de las iniciativas de acción por zona regional. Cada zona incluye su versión en PDF (vista rápida) y PowerPoint (descarga).</p>
+
+  <div class="card-grid" id="zones"></div>
+
+  <p class="note">La presentación de PowerPoint de la Zona 6 supera el límite de 100&nbsp;MB de GitHub y por eso se enlaza directamente a Google Drive en lugar de alojarse en este sitio.</p>
+</main>
+
+<script>
+  const zones = [
+    { name: "Zone 2", pdf: "assets/action-plans/Zone 2 Presentation.pdf", ppt: "assets/action-plans/Zone 2 Presentation.pptx" },
+    { name: "Zone 3", pdf: "assets/action-plans/Zone 3 Presentation.pdf", ppt: "assets/action-plans/Zone 3 Presentation.pptx" },
+    { name: "Zone 4", pdf: "assets/action-plans/Zone 4 Presentation.pdf", ppt: "assets/action-plans/Zone 4 Presentation.pptx" },
+    { name: "Zone 5", pdf: "assets/action-plans/Zone 5 Presentation.pdf", ppt: "assets/action-plans/Zone 5 Presentation.pptx" },
+    { name: "Zone 6", pdf: "assets/action-plans/Zone 6 Presentation.pdf", ppt: "https://drive.google.com/file/d/1vvTz9XxhMrF5VG63QKM9vbQXsHVMDZ_k/view", pptExternal: true },
+    { name: "Zone 7", pdf: "assets/action-plans/Zone 7 Presentation.pdf", ppt: "assets/action-plans/Zone 7 Presentation.pptx" },
+    { name: "Zone 8", pdf: "assets/action-plans/Zone 8 Presentation.pdf", ppt: "assets/action-plans/Zone 8 Presentation.pptx" },
+  ];
+
+  const container = document.getElementById("zones");
+
+  zones.forEach(z => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const pptLabel = z.pptExternal ? "PPT (Drive)" : "PPT";
+
+    card.innerHTML = `
+      <h3>${z.name}</h3>
+      <div class="file-row">
+        <span class="label"><span class="badge pdf">PDF</span> Presentación</span>
+        <span class="actions">
+          <a href="${z.pdf}" target="_blank" rel="noopener">Ver</a>
+          <a href="${z.pdf}" download>Descargar</a>
+        </span>
+      </div>
+      <div class="file-row">
+        <span class="label"><span class="badge ppt">PPT</span> Presentación</span>
+        <span class="actions">
+          <a href="${z.ppt}" target="_blank" rel="noopener">${z.pptExternal ? "Abrir en Drive" : "Ver"}</a>
+          ${z.pptExternal ? "" : `<a href="${z.ppt}" download>Descargar</a>`}
+        </span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+</script>
+</body>
+</html>
