@@ -27,11 +27,13 @@ body {
 header.site-header {
   background: var(--navy);
   color: #fff;
-  padding: 0 1.5rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  gap: 0.5rem 1.5rem;
+  min-height: 64px;
 }
 
 header.site-header .brand {
@@ -44,15 +46,17 @@ header.site-header .brand {
 
 nav.site-nav {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
 }
 
 nav.site-nav a {
   color: #d7dee7;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   padding: 0.5rem 0;
   border-bottom: 2px solid transparent;
+  white-space: nowrap;
 }
 
 nav.site-nav a:hover,
@@ -145,6 +149,15 @@ main {
 }
 
 .actions a:hover { text-decoration: underline; }
+
+.actions a.pending,
+a.pending {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  cursor: default;
+  pointer-events: none;
+  font-style: italic;
+}
 
 .note {
   font-size: 0.85rem;
