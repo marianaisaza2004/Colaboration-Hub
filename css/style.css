@@ -150,6 +150,34 @@ main {
 
 .actions a:hover { text-decoration: underline; }
 
+.link-slot {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.link-input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  min-width: 220px;
+}
+
+.btn-mini {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-mini:hover { background: var(--navy-dark); }
+
 .actions a.pending,
 a.pending {
   color: var(--muted) !important;

@@ -39,15 +39,17 @@
   <div class="card-grid" id="workspace"></div>
 </main>
 
-<script>
+<script type="module">
+  import { initLinkSlot } from "./js/resource-links.js";
+
   const zones = [
-    { name: "Zone 2", pdf: "assets/action-plans/Zone 2 Presentation.pdf", ppt: "assets/action-plans/Zone 2 Presentation.pptx" },
-    { name: "Zone 3", pdf: "assets/action-plans/Zone 3 Presentation.pdf", ppt: "assets/action-plans/Zone 3 Presentation.pptx" },
-    { name: "Zone 4", pdf: "assets/action-plans/Zone 4 Presentation.pdf", ppt: "assets/action-plans/Zone 4 Presentation.pptx" },
-    { name: "Zone 5", pdf: "assets/action-plans/Zone 5 Presentation.pdf", ppt: "assets/action-plans/Zone 5 Presentation.pptx" },
-    { name: "Zone 6", pdf: "assets/action-plans/Zone 6 Presentation.pdf", ppt: "https://drive.google.com/file/d/1vvTz9XxhMrF5VG63QKM9vbQXsHVMDZ_k/view", pptExternal: true },
-    { name: "Zone 7", pdf: "assets/action-plans/Zone 7 Presentation.pdf", ppt: "assets/action-plans/Zone 7 Presentation.pptx" },
-    { name: "Zone 8", pdf: "assets/action-plans/Zone 8 Presentation.pdf", ppt: "assets/action-plans/Zone 8 Presentation.pptx" },
+    { name: "Zone 2", slug: "zone-2", pdf: "assets/action-plans/Zone 2 Presentation.pdf", ppt: "assets/action-plans/Zone 2 Presentation.pptx" },
+    { name: "Zone 3", slug: "zone-3", pdf: "assets/action-plans/Zone 3 Presentation.pdf", ppt: "assets/action-plans/Zone 3 Presentation.pptx" },
+    { name: "Zone 4", slug: "zone-4", pdf: "assets/action-plans/Zone 4 Presentation.pdf", ppt: "assets/action-plans/Zone 4 Presentation.pptx" },
+    { name: "Zone 5", slug: "zone-5", pdf: "assets/action-plans/Zone 5 Presentation.pdf", ppt: "assets/action-plans/Zone 5 Presentation.pptx" },
+    { name: "Zone 6", slug: "zone-6", pdf: "assets/action-plans/Zone 6 Presentation.pdf", ppt: "https://drive.google.com/file/d/1vvTz9XxhMrF5VG63QKM9vbQXsHVMDZ_k/view", pptExternal: true },
+    { name: "Zone 7", slug: "zone-7", pdf: "assets/action-plans/Zone 7 Presentation.pdf", ppt: "assets/action-plans/Zone 7 Presentation.pptx" },
+    { name: "Zone 8", slug: "zone-8", pdf: "assets/action-plans/Zone 8 Presentation.pdf", ppt: "assets/action-plans/Zone 8 Presentation.pptx" },
   ];
 
   const container = document.getElementById("zones");
@@ -55,6 +57,9 @@
   zones.forEach(z => {
     const card = document.createElement("div");
     card.className = "card";
+
+    const regionalDataId = `link-${z.slug}-regional-data`;
+    const inventoryId = `link-${z.slug}-initiatives-inventory`;
 
     card.innerHTML = `
       <h3>${z.name}</h3>
@@ -74,33 +79,37 @@
       </div>
       <div class="file-row">
         <span class="label">Regional data</span>
-        <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+        <span class="actions link-slot" id="${regionalDataId}"></span>
       </div>
       <div class="file-row">
         <span class="label">Initiatives Inventory</span>
-        <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+        <span class="actions link-slot" id="${inventoryId}"></span>
       </div>
     `;
     container.appendChild(card);
+    initLinkSlot(document.getElementById(regionalDataId), `action-plans-${z.slug}-regional-data`);
+    initLinkSlot(document.getElementById(inventoryId), `action-plans-${z.slug}-initiatives-inventory`);
   });
 
   const workspaceItems = [
-    { name: "Working documents", desc: "Shared drafts and in-progress files for this region." },
-    { name: "Meeting notes", desc: "Notes from regional and statewide meetings." },
-    { name: "Calendar", desc: "Upcoming meetings and deadlines." },
-    { name: "Contact directory", desc: "Contact info for delegation members." },
+    { name: "Working documents", id: "workspace-working-documents", desc: "Shared drafts and in-progress files for this region." },
+    { name: "Meeting notes", id: "workspace-meeting-notes", desc: "Notes from regional and statewide meetings." },
+    { name: "Calendar", id: "workspace-calendar", desc: "Upcoming meetings and deadlines." },
+    { name: "Contact directory", id: "workspace-contact-directory", desc: "Contact info for delegation members." },
   ];
 
   const workspaceContainer = document.getElementById("workspace");
   workspaceItems.forEach(item => {
+    const slotId = `link-${item.id}`;
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <h3>${item.name}</h3>
       <p>${item.desc}</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="${slotId}"></span>
     `;
     workspaceContainer.appendChild(card);
+    initLinkSlot(document.getElementById(slotId), item.id);
   });
 </script>
 

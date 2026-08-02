@@ -34,7 +34,7 @@
     <div class="card">
       <h3>Delegate Directory</h3>
       <p>Full directory with bios, photos, and contact info for all delegates.</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-hub-delegate-directory"></span>
     </div>
     <div class="card wide">
       <h3>Google Workspace</h3>
@@ -73,6 +73,10 @@
   </div>
 </main>
 
+<script type="module">
+  import { initLinkSlot } from "./js/resource-links.js";
+  initLinkSlot(document.getElementById("link-hub-delegate-directory"), "hub-delegate-directory");
+</script>
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>

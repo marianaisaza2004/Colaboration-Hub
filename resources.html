@@ -34,26 +34,33 @@
     <div class="card">
       <h3>Expert Advisors</h3>
       <p>Google Doc where names can be added as Expert Advisors.</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-resources-expert-advisors"></span>
     </div>
     <div class="card">
       <h3>Peer Reviews</h3>
       <p>Google Doc where people can ask the network for comment on their plans.</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-resources-peer-reviews"></span>
     </div>
     <div class="card">
       <h3>Academy Presentations</h3>
       <p>PowerPoint decks presented at the Academy, by year.</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-resources-academy-presentations"></span>
     </div>
     <div class="card">
       <h3>Michael Porter Videos</h3>
       <p>Video library.</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-resources-porter-videos"></span>
     </div>
   </div>
 </main>
 
+<script type="module">
+  import { initLinkSlot } from "./js/resource-links.js";
+  initLinkSlot(document.getElementById("link-resources-expert-advisors"), "resources-expert-advisors");
+  initLinkSlot(document.getElementById("link-resources-peer-reviews"), "resources-peer-reviews");
+  initLinkSlot(document.getElementById("link-resources-academy-presentations"), "resources-academy-presentations");
+  initLinkSlot(document.getElementById("link-resources-porter-videos"), "resources-porter-videos");
+</script>
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>

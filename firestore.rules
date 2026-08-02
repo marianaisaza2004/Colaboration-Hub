@@ -18,6 +18,12 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // Resource links: any authenticated member can add or edit a link so it
+    // becomes visible to everyone (e.g. Zoom link, shared docs, directories).
+    match /resourceLinks/{linkId} {
+      allow read, write: if request.auth != null;
+    }
+
     // Private chats: only the two participants can read/write.
     match /privateChats/{chatId} {
       allow read, write: if request.auth != null && request.auth.uid in chatId.split('_');

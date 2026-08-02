@@ -31,7 +31,7 @@
   <p class="page-subtitle">Nominate Fellows for the next Academy to keep the leadership pipeline going.</p>
 
   <section class="content-section">
-    <p>To ensure continuity of work and expansion of each region's Competitiveness Action Plan, Fellows are invited to nominate Fellows for the next Academy. Criteria for nominees can be found <a href="#" class="pending">here</a>. The nomination form can be found <a href="#" class="pending">here</a>.</p>
+    <p>To ensure continuity of work and expansion of each region's Competitiveness Action Plan, Fellows are invited to nominate Fellows for the next Academy. Criteria for nominees can be found <a href="#" id="mirror-nominations-criteria" class="pending">here</a>. The nomination form can be found <a href="#" id="mirror-nominations-form" class="pending">here</a>.</p>
     <p>Your nominations help build momentum for your regions. Moving forward, the annual Academy will open with a "showcase" in which new delegations present updates on the accomplishments of the prior year's delegation and as a basis for new work.</p>
     <p>This opening Academy event creates continuity between Academy classes and a self-renewing leadership pipeline rather than starting from scratch each year.</p>
   </section>
@@ -39,15 +39,22 @@
   <div class="card-grid">
     <div class="card">
       <h3>Nomination Criteria</h3>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-nominations-criteria"></span>
     </div>
     <div class="card">
       <h3>Nomination Form</h3>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-nominations-form"></span>
     </div>
   </div>
 </main>
 
+<script type="module">
+  import { initLinkSlot, initLinkMirror } from "./js/resource-links.js";
+  initLinkSlot(document.getElementById("link-nominations-criteria"), "nominations-criteria");
+  initLinkSlot(document.getElementById("link-nominations-form"), "nominations-form");
+  initLinkMirror(document.getElementById("mirror-nominations-criteria"), "nominations-criteria");
+  initLinkMirror(document.getElementById("mirror-nominations-form"), "nominations-form");
+</script>
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>

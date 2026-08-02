@@ -34,11 +34,15 @@
     <div class="card wide">
       <h3><span class="badge doc">DOC</span> Tennessee Competitiveness Scorecard and Initiative Inventory</h3>
       <p>Combined report with the statewide Competitiveness Scorecard and all regional Initiative Inventories.</p>
-      <span class="actions"><a href="#" class="pending">Coming soon</a></span>
+      <span class="actions link-slot" id="link-scorecard-report"></span>
     </div>
   </div>
 </main>
 
+<script type="module">
+  import { initLinkSlot } from "./js/resource-links.js";
+  initLinkSlot(document.getElementById("link-scorecard-report"), "scorecard-report");
+</script>
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>
