@@ -36,19 +36,26 @@ tabLogin.addEventListener("click", showLogin);
 tabSignup.addEventListener("click", showSignup);
 showLogin();
 
+const ACCESS_CODE = "PorterAcademy2026";
+
 signupForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   errorMsg.textContent = "";
   const name = document.getElementById("signupName").value.trim();
   const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value;
+  const accessCode = document.getElementById("signupAccessCode").value.trim();
 
-  if (!name || !email || !password) {
-    errorMsg.textContent = "Please fill in name, email, and password.";
+  if (!name || !email || !password || !accessCode) {
+    errorMsg.textContent = "Please fill in name, email, password, and access code.";
     return;
   }
   if (password.length < 6) {
     errorMsg.textContent = "Password must be at least 6 characters.";
+    return;
+  }
+  if (accessCode !== ACCESS_CODE) {
+    errorMsg.textContent = "Incorrect access code.";
     return;
   }
 
