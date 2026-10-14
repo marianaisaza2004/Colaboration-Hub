@@ -1,0 +1,15 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Fellows Library uploads: any signed-in member can read; each member can
+    // only upload into (and delete from) their own folder, up to 25 MB per file.
+    match /library/{uid}/{fileName} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.size < 25 * 1024 * 1024;
+      allow delete: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="gate-pending">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fellows Library - TLAP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">Tennessee Leaders Action Platform</a>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="action-plans.html">Action Plans</a>
+    <a href="scorecard.html">Scorecard &amp; Inventory</a>
+    <a href="events-forums.html">Events &amp; Forums</a>
+    <a href="hub-directory.html">Hub &amp; Directory</a>
+    <a href="resources.html">Resources</a>
+    <a href="library.html" class="active">Fellows Library</a>
+    <a href="nominations.html">Fellows Nominations</a>
+    <a href="media-press.html">Media &amp; Press Release</a>
+    <a href="chat.html">Chat</a>
+  </nav>
+  <div class="topbar-user" id="topbarUser" style="display:none;">
+    <span id="currentUserLabel"></span>
+    <button id="logoutBtn">Log out</button>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">Fellows Library</h1>
+  <p class="page-subtitle">A shared space where Fellows share documents, articles, videos, and other resources with one another. Add a link and give it a title that makes it easy to find.</p>
+
+  <section class="card wide">
+    <h3>Share a link with the Fellows</h3>
+    <form id="shareForm" novalidate>
+      <div class="field">
+        <label for="itemTitle">Title</label>
+        <input id="itemTitle" type="text" maxlength="120" placeholder="Choose a title that makes it easy to find, e.g. Workforce Case Study – Zone 4">
+      </div>
+
+      <div class="kind-toggle" id="kindToggle" role="radiogroup" aria-label="What are you sharing?">
+        <label><input type="radio" name="kind" value="file" checked> Upload a file</label>
+        <label><input type="radio" name="kind" value="link"> Share a link</label>
+      </div>
+
+      <div class="field" id="fileField">
+        <label for="itemFile">File</label>
+        <input id="itemFile" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt,.md,.png,.jpg,.jpeg,.zip">
+        <p class="hint">PDF, Word, PowerPoint, Excel, CSV, text, images, or a zip. Up to 25 MB.</p>
+      </div>
+
+      <div class="field" id="linkField" hidden>
+        <label for="itemUrl">Link</label>
+        <input id="itemUrl" type="url" placeholder="https://... (article, Google Drive file, video, website)">
+        <p class="hint">Tip: for a document, put it in Google Drive or OneDrive, set sharing to &ldquo;Anyone with the link&rdquo;, and paste that link here.</p>
+      </div>
+
+      <div class="field">
+        <label for="itemCategory">Category</label>
+        <select id="itemCategory"></select>
+      </div>
+
+      <div class="field">
+        <label for="itemDescription">Short description <span class="optional">(optional)</span></label>
+        <textarea id="itemDescription" rows="2" maxlength="400" placeholder="What is it, and why is it useful for other Fellows?"></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="shareBtn">Share</button>
+      <progress id="uploadProgress" max="100" value="0" hidden></progress>
+      <div class="error-msg" id="shareMsg" role="status"></div>
+    </form>
+  </section>
+
+  <section class="library-section">
+    <h2 class="library-heading">Shared materials <span class="library-count" id="libraryCount"></span></h2>
+    <div class="library-toolbar">
+      <input id="searchInput" type="search" placeholder="Search by title, description, or who shared it" aria-label="Search the library">
+      <select id="filterCategory" aria-label="Filter by category"></select>
+    </div>
+    <div id="libraryList" class="library-list" aria-live="polite"></div>
+  </section>
+</main>
+
+<script type="module" src="js/library.js"></script>
+<script type="module" src="js/guard.js"></script>
+</body>
+</html>

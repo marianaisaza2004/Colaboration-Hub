@@ -4,6 +4,7 @@ Static site (HTML/CSS/JS) with three sections:
 
 - **Action Plans** — PDF/PPT presentations for Zones 2–8.
 - **Media & Press Release** — press release and article (Word).
+- **Fellows Library** — shared space where signed-in Fellows share links (Drive, articles, videos…) with their own titles, categories, and search. Direct file upload is built but switched off (see step 7).
 - **Chat** — user signup (name, email, password) and group chat + private messages, using Firebase (Auth + Firestore).
 
 The whole site sits behind a login gate ([login.html](login.html)): visitors must create an account or log in before they can view any page.
@@ -16,6 +17,8 @@ The whole site sits behind a login gate ([login.html](login.html)): visitors mus
 4. Under **Firestore → Rules**, paste the contents of [`firestore.rules`](firestore.rules) from this repo and publish.
 5. Under **Project settings (gear icon) → Your apps**, add a **Web** app (`</>`) and copy the `firebaseConfig` object.
 6. Paste those values into [`js/firebase-config.js`](js/firebase-config.js), replacing the `REPLACE_...` placeholders.
+
+7. *(Optional — only if you want direct file uploads in the Fellows Library; the library works with links only without this.)* Under **Build → Storage** click *Get started* to create the default bucket, then under **Storage → Rules** paste the contents of [`storage.rules`](storage.rules) and publish, then set `FILE_UPLOADS_ENABLED = true` at the top of [`js/library.js`](js/library.js). Storage requires the Blaze (pay-as-you-go) plan. Sharing *links* only needs the Firestore rules from step 4.
 
 These `firebaseConfig` keys are **not secret** — they're meant to live in the frontend; real security comes from the Firestore/Auth rules in step 4.
 

@@ -16,6 +16,7 @@
     <a href="events-forums.html" class="active">Events &amp; Forums</a>
     <a href="hub-directory.html">Hub &amp; Directory</a>
     <a href="resources.html">Resources</a>
+    <a href="library.html">Fellows Library</a>
     <a href="nominations.html">Fellows Nominations</a>
     <a href="media-press.html">Media &amp; Press Release</a>
     <a href="chat.html">Chat</a>
@@ -28,13 +29,13 @@
 
 <main>
   <h1 class="page-title">Collaboration Events and Forums</h1>
-  <p class="page-subtitle">Zoom link for virtual meetings convened by GAP, and the schedule for Implementation Forums.</p>
+  <p class="page-subtitle">Meeting link for virtual meetings convened by GAP, and the schedule for Implementation Forums.</p>
 
   <div class="card-grid">
     <div class="card wide">
-      <h3>Zoom Link</h3>
-      <p>Virtual meetings convened by GAP. Opens Zoom, where a meeting can be started.</p>
-      <span class="actions"><a href="https://zoom.us/start" target="_blank" rel="noopener">Open Zoom</a></span>
+      <h3>Meeting Link</h3>
+      <p>Virtual meetings convened by GAP. Any signed-in member can add the link for the next meeting (Zoom, Microsoft Teams, or any other platform) and it shows here for everyone. Edit or remove it to set up a future meeting.</p>
+      <span class="actions link-slot" id="link-events-meeting"></span>
     </div>
   </div>
 
@@ -65,6 +66,14 @@
   </section>
 </main>
 
+<script type="module">
+  import { initLinkSlot } from "./js/resource-links.js";
+  initLinkSlot(document.getElementById("link-events-meeting"), "events-meeting-link", {
+    addLabel: "Add Meeting Link",
+    openLabel: "Join meeting",
+    removable: true,
+  });
+</script>
 <script type="module" src="js/guard.js"></script>
 </body>
 </html>
